@@ -14,7 +14,6 @@ import (
 	"bytes"
 	"bufio"
 	"os"
-	"io"
 )
 
 type Page struct {
@@ -24,24 +23,43 @@ type Page struct {
 	LastEdited string
 }
 var addr = flag.Bool("addr", false, "find open address and print to final-port.txt")
-var templates = template.Must(template.ParseFiles("edit.html", "view.html", "testWiki.html"))
+var templates = template.Must(template.ParseFiles("data/templates/edit.html", "data/templates/view.html", "data/templates/testWiki.html"))
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
+/*
+ This function will save the given page and its metadata to file
+
+ <br><br>
+
+ p - A pointer to the page reference you want to save
+ */
 func (p *Page) save() error {
+	//Set the last edit time of the page to the current time as is we are saving we will probably
+	//have just edited it.
 	p.LastEdited = time.Now().String()
-	filename := p.Title + ".txt"
-	data := append([]byte(p.LastEdited + "\n"), p.Body...)
-	return ioutil.WriteFile(filename, data, 0600)
+	//Create the content filename for the page
+	filename := "data/contents/" + p.Title + ".txt"
+	//Write the current page to file.
+	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
+/*
+
+ */
 func loadPage (title string) (*Page, error){
-	filename := title + ".txt"
-	reader, err := os.Open(filename)
-	dateLine, body := read(reader)
+	filename := "data/contents/" + title + ".txt"
+	metadata, err := loadFileMetadata(title)
+	var lastEdit string = "Unknown"
+	var author string = "Unknown"
+	if err != nil {
+		lastEdit = metadata[0]
+		author = metadata[1]
+	}
+	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	return &Page{Title: title, Body: body, LastEdited: string(dateLine)}, nil
+	return &Page{Title: title, Body: body, LastEdited: lastEdit, Author: author}, nil
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
@@ -128,6 +146,8 @@ func reverseProcessPage(body []byte) ([]byte){
 	linkCenterRegex := regexp.MustCompile(">")
 	linkFinishRegex := regexp.MustCompile("<\\/a>")
 
+	body = bytes.Replace(body, []byte("<br>"), []byte("\n"), -1)
+
 	body = boldStartRegex.ReplaceAll(body, []byte("*\\"))
 	body = boldFinishRegex.ReplaceAll(body, []byte("/*"))
 
@@ -138,7 +158,6 @@ func reverseProcessPage(body []byte) ([]byte){
 	body = linkFinishRegex.ReplaceAll(body, []byte("]/"))
 	body = linkCenterRegex.ReplaceAll(body, []byte("]["))
 
-	body = bytes.Replace(body, []byte("<br>"), []byte("\n"), -1)
 
 	return body
 }
@@ -154,7 +173,7 @@ func processPage(body []byte) ([]byte){
 	linkCenterRegex := regexp.MustCompile("\\]\\[")
 	linkFinishRegex := regexp.MustCompile("\\]\\/")
 
-	body = bytes.Replace(body, []byte("\n"), []byte("<br>"), -1)
+	body = bytes.Replace(body, []byte("\\n"), []byte("<br>"), -1)
 
 	body = boldStartRegex.ReplaceAll(body, []byte("<strong>"))
 	body = boldFinishRegex.ReplaceAll(body, []byte("</strong>"))
@@ -166,25 +185,26 @@ func processPage(body []byte) ([]byte){
 	body = linkCenterRegex.ReplaceAll(body, []byte("\">"))
 	body = linkFinishRegex.ReplaceAll(body, []byte("</a>"))
 
+	fmt.Println(string(body))
+
 	return body
 }
 
-func read(reader io.Reader)(date []byte, text []byte){
-	text = []byte("zx")
-	var newReader *bufio.Reader = bufio.NewReader(reader)
-	var isFirst bool = true
-	for true {
-		if isFirst {
-			date, _, _ = newReader.ReadLine()
-			isFirst = false
-		}
-		temp , _, err:= newReader.ReadLine()
-		if err != nil {
-			break
-		}
-		text = append(text, temp...)
+func loadFileMetadata(pageName string) (metaData []string, err error) {
+	filename := "data/meta/" + pageName + ".txt"
+	reader, error := os.Open(filename)
+	if error != nil {
+		return nil, error
 	}
-	return date, text
+	bufReader := bufio.NewReader(reader)
+	lastEdited, _, error := bufReader.ReadLine()
+	author, _, error := bufReader.ReadLine()
+
+	var returnVal []string
+	returnVal[0] = string(lastEdited)
+	returnVal[1] = string(author)
+
+	return returnVal, nil
 }
 
 func main() {
