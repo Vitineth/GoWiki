@@ -1,0 +1,14 @@
+Welcome to the Go WIKI Example project that will host the entire WIKI construct with editable and saveable pages.
+
+See our first Test Page here: [TestPage]
+And our welcome page: [Welcome]
+
+*\Bold text/*
+
+_\Italic text/_
+
+\[Welcome][Welcome Link]/
+
+*\Test/*
+
+*\bold/*
