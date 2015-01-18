@@ -11,16 +11,14 @@ import (
 	"regexp"
 	"errors"
 	"time"
-	"bytes"
-	"bufio"
-	"os"
+	"com/github/vitineth/go/wiki/ResourceUtils"
+	"com/github/vitineth/go/wiki/PageMarkdownUtils"
 )
 
 type Page struct {
 	Title string
 	Body  []byte
-	Author string
-	LastEdited string
+	Metadata *ResourceUtils.MetaData
 }
 var addr = flag.Bool("addr", false, "find open address and print to final-port.txt")
 var templates = template.Must(template.ParseFiles("data/templates/edit.html", "data/templates/view.html", "data/templates/testWiki.html"))
@@ -36,7 +34,11 @@ var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 func (p *Page) save() error {
 	//Set the last edit time of the page to the current time as is we are saving we will probably
 	//have just edited it.
-	p.LastEdited = time.Now().String()
+	year, month, day := time.Now().Date()
+	p.Metadata.LastSaveDate = string(day)+" "+month.String()+" "+string(year)
+
+	ResourceUtils.SaveFileMetadata(p.Metadata, p.Title)
+
 	//Create the content filename for the page
 	filename := "data/contents/" + p.Title + ".txt"
 	//Write the current page to file.
@@ -47,19 +49,33 @@ func (p *Page) save() error {
 
  */
 func loadPage (title string) (*Page, error){
+	//Construct the filename from the page title
 	filename := "data/contents/" + title + ".txt"
-	metadata, err := loadFileMetadata(title)
-	var lastEdit string = "Unknown"
-	var author string = "Unknown"
-	if err != nil {
-		lastEdit = metadata[0]
-		author = metadata[1]
+	//Get the metadata
+	metadata, err := ResourceUtils.LoadFileMetadata(title)
+
+	var meta *ResourceUtils.MetaData = &ResourceUtils.MetaData{
+		LastSaveDate: "Unknown",
+		LastSaveTime: "Unknown",
+		PageCreationDate: "Unknown",
+		PageCreationTime: "Unknown",
+		Author: "Unknown",
+		Views: -1}
+
+	if error(err) == nil {
+		meta = &ResourceUtils.MetaData{
+			LastSaveDate: metadata.LastSaveDate,
+			LastSaveTime: metadata.LastSaveTime,
+			PageCreationDate: metadata.PageCreationDate,
+			PageCreationTime: metadata.PageCreationTime,
+			Author: metadata.Author,
+			Views: metadata.Views}
 	}
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	return &Page{Title: title, Body: body, LastEdited: lastEdit, Author: author}, nil
+	return &Page{Title: title, Body: body, Metadata: meta}, nil
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
@@ -106,19 +122,10 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page, isView bool) {
-	var v map[string]interface{}
-	if isView {
-		v = map[string]interface{}{
-			"Title":    p.Title,
-			"Body":        template.HTML(processPage(p.Body)),
-			"LastMod": p.LastEdited,
-		}
-	}else{
-		v = map[string]interface{}{
-			"Title":    p.Title,
-			"Body":        template.HTML(reverseProcessPage(p.Body)),
-			"LastMod": p.LastEdited,
-		}
+	v := map[string]interface{}{
+		"Title":    p.Title,
+		"Body":        template.HTML(PageMarkdownUtils.ProcessPage(p.Body, isView)),
+		"LastMod": p.Metadata.LastSaveDate,
 	}
 	var err error = templates.ExecuteTemplate(w, tmpl+".html", v)
 	if err != nil {
@@ -133,78 +140,6 @@ func getTitle(w http.ResponseWriter, r *http.Request) (string, error) {
 		return "", errors.New("Invalid Page Title")
 	}
 	return m[2], nil // The title is the second subexpression.
-}
-
-func reverseProcessPage(body []byte) ([]byte){
-	boldStartRegex := regexp.MustCompile("<strong>")
-	boldFinishRegex := regexp.MustCompile("<\\/strong>")
-
-	italicsStartRegex := regexp.MustCompile("<em>")
-	italicsFinishRegex := regexp.MustCompile("<\\/em>")
-
-	linkBeginRegex := regexp.MustCompile("<a href=\"/view/")
-	linkCenterRegex := regexp.MustCompile(">")
-	linkFinishRegex := regexp.MustCompile("<\\/a>")
-
-	body = bytes.Replace(body, []byte("<br>"), []byte("\n"), -1)
-
-	body = boldStartRegex.ReplaceAll(body, []byte("*\\"))
-	body = boldFinishRegex.ReplaceAll(body, []byte("/*"))
-
-	body = italicsStartRegex.ReplaceAll(body, []byte("_\\"))
-	body = italicsFinishRegex.ReplaceAll(body, []byte("/_"))
-
-	body = linkBeginRegex.ReplaceAll(body, []byte("\\["))
-	body = linkFinishRegex.ReplaceAll(body, []byte("]/"))
-	body = linkCenterRegex.ReplaceAll(body, []byte("]["))
-
-
-	return body
-}
-
-func processPage(body []byte) ([]byte){
-	boldStartRegex := regexp.MustCompile("(\\*)\\\\")
-	boldFinishRegex := regexp.MustCompile("\\/(\\*)")
-
-	italicsStartRegex := regexp.MustCompile("_\\\\")
-	italicsFinishRegex := regexp.MustCompile("\\/_")
-
-	linkBeginRegex := regexp.MustCompile("\\\\\\[")
-	linkCenterRegex := regexp.MustCompile("\\]\\[")
-	linkFinishRegex := regexp.MustCompile("\\]\\/")
-
-	body = bytes.Replace(body, []byte("\\n"), []byte("<br>"), -1)
-
-	body = boldStartRegex.ReplaceAll(body, []byte("<strong>"))
-	body = boldFinishRegex.ReplaceAll(body, []byte("</strong>"))
-
-	body = italicsStartRegex.ReplaceAll(body, []byte("<em>"))
-	body = italicsFinishRegex.ReplaceAll(body, []byte("</em>"))
-
-	body = linkBeginRegex.ReplaceAll(body, []byte("<a href=\"/view/"))
-	body = linkCenterRegex.ReplaceAll(body, []byte("\">"))
-	body = linkFinishRegex.ReplaceAll(body, []byte("</a>"))
-
-	fmt.Println(string(body))
-
-	return body
-}
-
-func loadFileMetadata(pageName string) (metaData []string, err error) {
-	filename := "data/meta/" + pageName + ".txt"
-	reader, error := os.Open(filename)
-	if error != nil {
-		return nil, error
-	}
-	bufReader := bufio.NewReader(reader)
-	lastEdited, _, error := bufReader.ReadLine()
-	author, _, error := bufReader.ReadLine()
-
-	var returnVal []string
-	returnVal[0] = string(lastEdited)
-	returnVal[1] = string(author)
-
-	return returnVal, nil
 }
 
 func main() {

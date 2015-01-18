@@ -266,8 +266,10 @@ mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.
 </div>
 <div id="footer" role="contentinfo">
     <ul id="footer-info">
-        <li id="footer-info-lastmod"> This page was last modified on {{.LastMod}}, at 12:28.</li>
-        <li id="footer-info-viewcount">This page has been accessed 1,035 times.</li>
+        <li id="footer-info-lastmod"> This page was created on {{.CreationDat}} at {{.CreationTime}} and last modified
+            on {{.LastModTime}}, at {{.LastModTime}}.
+        </li>
+        <li id="footer-info-viewcount">This page has been accessed {{.Views}} times.</li>
     </ul>
     <ul id="footer-places">
         <li id="footer-places-privacy"><a href="/wiki/Cheltenham_Hackspace_Wiki:Privacy_policy"
