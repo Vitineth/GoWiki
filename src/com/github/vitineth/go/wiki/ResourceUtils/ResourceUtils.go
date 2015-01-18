@@ -20,30 +20,48 @@ type MetaData struct {
 
 }
 
+func AddPageViewToMetadata(meta *MetaData) (newMeta *MetaData) {
+	var retMeta *MetaData = &MetaData{
+		PageCreationDate: meta.PageCreationDate,
+		PageCreationTime: meta.PageCreationTime,
+		LastSaveDate: meta.LastSaveDate,
+		LastSaveTime: meta.LastSaveTime,
+		Author: meta.Author,
+		Views: meta.Views + 1,
+	}
+	return retMeta
+}
+
 func SaveFileMetadata(meta *MetaData, pageName string) (err error) {
 	filename := "data/meta/" + pageName + ".txt"
-	writer, error := os.Open(filename)
+
+	error := os.Remove(filename)
+	if error != nil {return error}
+
+	writer, error := os.Create(filename)
 	if error != nil {return error}
 
 	bufWriter := bufio.NewWriter(writer)
 
-	_, error = bufWriter.WriteString(meta.PageCreationDate)
+	_, error = bufWriter.WriteString(meta.PageCreationDate+"\n")
 	if error != nil {return error}
 
-	_, error = bufWriter.WriteString(meta.PageCreationTime)
+	_, error = bufWriter.WriteString(meta.PageCreationTime+"\n")
 	if error != nil {return error}
 
-	_, error = bufWriter.WriteString(meta.LastSaveDate)
+	_, error = bufWriter.WriteString(meta.LastSaveDate+"\n")
 	if error != nil {return error}
 
-	_, error = bufWriter.WriteString(meta.LastSaveTime)
+	_, error = bufWriter.WriteString(meta.LastSaveTime+"\n")
 	if error != nil {return error}
 
-	_, error = bufWriter.WriteString(meta.Author)
+	_, error = bufWriter.WriteString(meta.Author+"\n")
 	if error != nil {return error}
 
-	_, error = bufWriter.WriteString(string(meta.Views))
+	_, error = bufWriter.WriteString(strconv.Itoa(meta.Views)+"\n")
 	if error != nil {return error}
+
+	bufWriter.Flush()
 
 	return nil
 }
@@ -80,3 +98,4 @@ func LoadFileMetadata(pageName string) (metadata *MetaData, err error) {
 
 	return &MetaData{PageCreationDate: string(creationDate), PageCreationTime: string(creationTime), LastSaveDate: string(lastEdited), LastSaveTime: string(lastEditTime), Author: string(author), Views: iViews}, nil
 }
+

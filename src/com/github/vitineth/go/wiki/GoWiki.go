@@ -85,6 +85,9 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 		return
 	}
 	if title == "testWiki" {
+		p.Metadata = ResourceUtils.AddPageViewToMetadata(p.Metadata)
+		fmt.Println(p.Metadata.Views)
+		ResourceUtils.SaveFileMetadata(p.Metadata, p.Title)
 		renderTemplate(w, "testWiki", p, true)
 	}else {
 		renderTemplate(w, "view", p, true)
@@ -123,9 +126,13 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page, isView bool) {
 	v := map[string]interface{}{
-		"Title":    p.Title,
-		"Body":        template.HTML(PageMarkdownUtils.ProcessPage(p.Body, isView)),
-		"LastMod": p.Metadata.LastSaveDate,
+		"Title":        p.Title,
+		"Body":            template.HTML(PageMarkdownUtils.ProcessPage(p.Body, isView)),
+		"LastModDate":    p.Metadata.LastSaveDate,
+		"LastModTime":    p.Metadata.LastSaveTime,
+		"CreationDate": p.Metadata.PageCreationDate,
+		"CreationTime": p.Metadata.PageCreationTime,
+		"Views":        p.Metadata.Views,
 	}
 	var err error = templates.ExecuteTemplate(w, tmpl+".html", v)
 	if err != nil {
