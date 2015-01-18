@@ -1,0 +1,316 @@
+<html lang="en" dir="ltr" class="client-js">
+<head>
+    <script async=""
+            src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=jquery.checkboxShiftClick%2Chidpi%2ChighlightText%2CmakeCollapsible%2Cmw-jump%2Cplaceholder%2Csuggestions%2CtabIndex%7Cmediawiki.action.view.postEdit%7Cmediawiki.api%2Ccldr%2Chidpi%2CjqueryMsg%2Clanguage%2CsearchSuggest%2Cuser%7Cmediawiki.language.data%2Cinit%7Cmediawiki.libs.pluralruleparser%7Cmediawiki.page.ready%7Cskins.vector.collapsibleNav&amp;skin=vector&amp;version=20141119T205600Z&amp;*"></script>
+    <meta charset="UTF-8">
+    <title>Cheltenham Hackspace Wiki</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="generator" content="MediaWiki 1.23.5">
+    <link rel="alternate" type="application/x-wiki" title="Edit" href="/edit/{{.Title}}">
+    <link rel="edit" title="Edit" href="/edit/{{.Title}}">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="search" type="application/opensearchdescription+xml" href="/mediawiki/opensearch_desc.php"
+          title="Cheltenham Hackspace Wiki (en)">
+    <link rel="EditURI" type="application/rsd+xml"
+          href="http://www.cheltenhamhackspace.org/mediawiki/api.php?action=rsd">
+    <link rel="alternate" type="application/atom+xml" title="Cheltenham Hackspace Wiki Atom feed"
+          href="/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+    <link rel="stylesheet"
+          href="http://www.cheltenhamhackspace.org/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.vector.styles&amp;only=styles&amp;skin=vector&amp;*">
+    <style>
+        .mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}
+        caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle{float:none}
+        .mw-collapsible-toggle-li{list-style:none}
+        /* cache key: hackspace_wiki:resourceloader:filter:minify-css:7:6c1d24e90626cec584f0869483f983e7 */
+        .suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px
+        -1px 0 0} html > body .suggestions{margin:-1px 0 0
+        0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px
+        #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em
+        0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px
+        #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em
+        0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis;
+        text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special
+        .special-label{color:gray;text-align:left}.suggestions-special
+        .special-query{color:black;font-style:italic;text-align:left}.suggestions-special
+        .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current
+        .special-query{color:white}.highlight{font-weight:bold}
+        /* cache key: hackspace_wiki:resourceloader:filter:minify-css:7:9f9511aa4ef920d34591113e825e6a1e */
+        .postedit-container{margin:0
+        auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em
+        3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid
+        #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0
+        #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s
+        ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s
+        ease-in-out}.skin-monobook .postedit{top:6em
+        !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;
+        line-height:25px;background-repeat:no-repeat;background-position:8px
+        50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(http://www.cheltenhamhackspace.org/mediawiki/resources/src/mediawiki.action/images/green-checkmark.png?2014-10-01T21:51:40Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0
+        .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0
+        white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+        /* cache key: hackspace_wiki:resourceloader:filter:minify-css:7:ee59520e2d220def68f816956790df50 */
+    </style>
+    <style>
+        .suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions
+        a.mw-searchSuggest-link:active,.suggestions
+        a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current
+        a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current
+        a.mw-searchSuggest-link:active,.suggestions-result-current
+        a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{
+        overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
+        /* cache key: hackspace_wiki:resourceloader:filter:minify-css:7:ae3fa4570b5ac0c6cf7b3776c8ae4d6f */
+    </style>
+    <meta name="ResourceLoaderDynamicStyles" content="">
+    <style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+        /* cache key: hackspace_wiki:resourceloader:filter:minify-css:7:bb07f5fc9d9acb37ff15de127ee5b686 */
+    </style>
+    <script src="http://www.cheltenhamhackspace.org/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+    <style type="text/css"></style>
+    <script src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=jquery%2Cmediawiki&amp;only=scripts&amp;skin=vector&amp;version=20141005T105539Z"></script>
+    <script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Main_Page","wgTitle":"Main Page","wgCurRevisionId":250,"wgRevisionId":250,"wgArticleId":1,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Main_Page","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgIsMainPage":true});
+}
+    </script>
+    <script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":1,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nickname":"","norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rows":25,"showhiddencats":0,"shownumberswatching":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":1,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,
+"useeditwarning":1,"prefershttps":1,"language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: hackspace_wiki:resourceloader:filter:minify-js:7:8d7e903275f4fc5a5ad6387c1fbe7337 */
+}
+    </script>
+    <script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","skins.vector.js"]);
+}
+    </script>
+    <script src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=jquery.client%2Ccookie%2CmwExtension%2Cthrottle-debounce%7Cmediawiki.legacy.ajax%2Cwikibits%7Cmediawiki.notify%2Ctoc%2Cutil%7Cmediawiki.page.startup%7Cskins.vector.js&amp;skin=vector&amp;version=20141119T205600Z&amp;*"></script>
+    <!--[if lt IE 7]>
+    <style type="text/css">body{behavior:url("/mediawiki/skins/vector/csshover.min.htc")}</style><![endif]-->
+    <style type="text/css" id="GINGER_SOFTWARE_style">.GINGER_SOFTWARE_noMark { background : transparent; }
+        .GINGER_SOFTWARE_wrapper{ position: absolute; overflow: hidden; margin: 0px; padding: 0px; border: 0px solid
+        transparent } .GINGER_SOFTWARE_contour { position : absolute; margin: 0px; } .GINGER_SOFTWARE_richText { margin
+        : 0px; padding-bottom: 3px; border-width: 0px; border-color: transparent; display: block; color: transparent;
+        -webkit-text-fill-color: transparent; overflow: hidden; white-space: pre-wrap;} .GINGER_SOFTWARE_inputWrapper
+        .GINGER_SOFTWARE_richText {position: absolute;} .GINGER_SOFTWARE_canvas { display:none;
+        background-repeat:no-repeat;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_mark {border-top-left-radius:2px; border-top-right-radius:2px; border-bottom-right-radius:2px;
+        border-bottom-left-radius:2px;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_mark
+        {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;}
+        .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_synonym
+        {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAABJJREFUeNpi+P9gEwAAAP//AwAFcwKS3d7BnwAAAABJRU5ErkJggg==)!important;}
+        .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control
+        .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_noSuggestion
+        {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;}
+        .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_SpellingCorrect,
+        .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_mark
+        {position:relative; background-image:none!important;} .GINGER_SOFTWARE_richText
+        .GINGER_SOFTWARE_markHighlightLeft { position : absolute; left:-2px; top:0px; bottom:0px; width:2px;}
+        .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightRight { position : absolute; right:-2px; top:0px;
+        bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightTop { position : absolute;
+        left:0px; right:0px; top:-2px; height:3px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightBottom {
+        position : absolute; left:0px; right:0px; bottom:-2px; height:3px;}
+    </style>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Main_Page skin-vector action-view vector-animateLayout"
+      ginger_software_stylesheet="true" ginger_software_doc="true">
+<div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+    <a id="top"></a>
+
+    <div id="mw-js-message" style="display:none;"></div>
+    <h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">{{.Title}}</span></h1>
+
+    <div id="bodyContent">
+        <div id="siteSub">From Cheltenham Hackspace Wiki</div>
+        <div id="contentSub"></div>
+        <div id="jump-to-nav" class="mw-jump">
+            Jump to: <a href="#mw-navigation">navigation</a>, <a href="#p-search">search</a>
+        </div>
+        <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">{{.Body}}
+        </div>
+        <div class="printfooter">
+            Retrieved from "<a
+                href="http://www.cheltenhamhackspace.org/mediawiki/index.php?title=Main_Page&amp;oldid=250">http://www.cheltenhamhackspace.org/mediawiki/index.php?title=Main_Page&amp;oldid=250</a>"
+        </div>
+        <div id="catlinks" class="catlinks catlinks-allhidden"></div>
+        <div class="visualClear"></div>
+    </div>
+</div>
+<div id="mw-navigation">
+    <h2>Navigation menu</h2>
+
+    <div id="mw-head">
+        <div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+            <h3 id="p-personal-label">Personal tools</h3>
+            <ul>
+                <li id="pt-createaccount"><a
+                        href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Main+Page&amp;type=signup">Create
+                    account</a></li>
+                <li id="pt-login"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Main+Page"
+                                     title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]"
+                                     accesskey="o">Log in</a></li>
+            </ul>
+        </div>
+        <div id="left-navigation">
+            <div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+                <h3 id="p-namespaces-label">Namespaces</h3>
+                <ul>
+                    <li id="ca-nstab-main" class="selected"><span><a href="/wiki/Main_Page"
+                                                                     title="View the content page [alt-shift-c]"
+                                                                     accesskey="c">Page</a></span></li>
+                    <li id="ca-talk" class="new"><span><a
+                            href="/mediawiki/index.php?title=Talk:Main_Page&amp;action=edit&amp;redlink=1"
+                            title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></span>
+                    </li>
+                </ul>
+            </div>
+            <div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+                <h3 id="mw-vector-current-variant">
+                </h3>
+
+                <h3 id="p-variants-label" tabindex="0"><span>Variants</span><a href="#" tabindex="-1"></a></h3>
+
+                <div class="menu">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="right-navigation">
+            <div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+                <h3 id="p-views-label">Views</h3>
+                <ul>
+                    <li id="ca-view" class="selected"><span><a href="/wiki/Main_Page">Read</a></span></li>
+                    <li id="ca-edit"><span><a href="/edit/{{.Title}}"
+                                              title="You can edit this page. Please use the preview button before saving [alt-shift-e]"
+                                              accesskey="e">Edit</a></span></li>
+                    <li id="ca-history" class="collapsible"><span><a
+                            href="/mediawiki/index.php?title=Main_Page&amp;action=history"
+                            title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+                </ul>
+            </div>
+            <div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+                <h3 id="p-cactions-label" tabindex="0"><span>Actions</span><a href="#" tabindex="-1"></a></h3>
+
+                <div class="menu">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <div id="p-search" role="search">
+                <h3><label for="searchInput">Search</label></h3>
+
+                <form action="/mediawiki/index.php" id="searchform">
+                    <div id="simpleSearch">
+                        <input type="search" name="search" placeholder="Search"
+                               title="Search Cheltenham Hackspace Wiki [alt-shift-f]" accesskey="f" id="searchInput"
+                               tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input
+                            type="submit" name="go" value="Go" title="Go to a page with this exact name if exists"
+                            id="searchButton" class="searchButton"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="mw-panel" class="collapsible-nav">
+        <div id="p-logo" role="banner"><a style="background-image: url(/mediawiki/skins/Chelt_Mk6.png);"
+                                          href="/wiki/Main_Page" title="Visit the main page"></a></div>
+        <div class="portal first persistent" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+            <h3 id="p-navigation-label">Navigation</h3>
+
+            <div class="body">
+                <ul>
+                    <li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [alt-shift-z]"
+                                                       accesskey="z">Main page</a></li>
+                    <li id="n-recentchanges"><a href="/wiki/Special:RecentChanges"
+                                                title="A list of recent changes in the wiki [alt-shift-r]"
+                                                accesskey="r">Recent changes</a></li>
+                    <li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random page [alt-shift-x]"
+                                             accesskey="x">Random page</a></li>
+                    <li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents"
+                                       title="The place to find out">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="portal expanded" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+            <h3 id="p-tb-label" tabindex="2"><a href="#" aria-haspopup="true" aria-controls="p-tb-list" role="button"
+                                                aria-pressed="true" aria-expanded="true">Tools</a></h3>
+
+            <div class="body" style="display: block;">
+                <ul id="p-tb-list">
+                    <li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Main_Page"
+                                                title="A list of all wiki pages that link here [alt-shift-j]"
+                                                accesskey="j">What links here</a></li>
+                    <li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Main_Page"
+                                                      title="Recent changes in pages linked from this page [alt-shift-k]"
+                                                      accesskey="k">Related changes</a></li>
+                    <li id="t-specialpages"><a href="/wiki/Special:SpecialPages"
+                                               title="A list of all special pages [alt-shift-q]" accesskey="q">Special
+                        pages</a></li>
+                    <li id="t-print"><a href="/mediawiki/index.php?title=Main_Page&amp;printable=yes" rel="alternate"
+                                        title="Printable version of this page [alt-shift-p]" accesskey="p">Printable
+                        version</a></li>
+                    <li id="t-permalink"><a href="/mediawiki/index.php?title=Main_Page&amp;oldid=250"
+                                            title="Permanent link to this revision of the page">Permanent link</a></li>
+                    <li id="t-info"><a href="/mediawiki/index.php?title=Main_Page&amp;action=info">Page information</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer" role="contentinfo">
+    <ul id="footer-info">
+        <li id="footer-info-lastmod"> This page was last modified on {{.LastMod}}, at 12:28.</li>
+        <li id="footer-info-viewcount">This page has been accessed 1,035 times.</li>
+    </ul>
+    <ul id="footer-places">
+        <li id="footer-places-privacy"><a href="/wiki/Cheltenham_Hackspace_Wiki:Privacy_policy"
+                                          title="Cheltenham Hackspace Wiki:Privacy policy">Privacy policy</a></li>
+        <li id="footer-places-about"><a href="/wiki/Cheltenham_Hackspace_Wiki:About"
+                                        title="Cheltenham Hackspace Wiki:About">About Cheltenham Hackspace Wiki</a></li>
+        <li id="footer-places-disclaimer"><a href="/wiki/Cheltenham_Hackspace_Wiki:General_disclaimer"
+                                             title="Cheltenham Hackspace Wiki:General disclaimer">Disclaimers</a></li>
+    </ul>
+    <ul id="footer-icons" class="noprint">
+        <li id="footer-poweredbyico">
+            <a href="//www.mediawiki.org/"><img src="/mediawiki/skins/common/images/poweredby_mediawiki_88x31.png"
+                                                alt="Powered by MediaWiki" width="88" height="31"></a>
+        </li>
+    </ul>
+    <div style="clear:both"></div>
+</div>
+<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready","user":"ready","user.groups":"ready"});
+}
+</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","skins.vector.collapsibleNav"],null,true);
+}
+</script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":126});
+}
+</script>
+
+
+<div class="suggestions" style="display: none; font-size: 13px;">
+    <div class="suggestions-results"></div>
+    <div class="suggestions-special"></div>
+</div>
+<script id="hiddenlpsubmitdiv" style="display: none;"></script>
+<script>
+    try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i; } else { d.textContent=i; } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}
+</script>
+<iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_bubblesIFrame" scrolling="no"
+        style="border: 0px solid; display: none; position: absolute; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe>
+<div id="GingerWidgetInfo" style="display:none;">{"version":"0.1.0.556","isExtension":true,"extensionName":"Chrome"}
+</div>
+</body>
+</html>
