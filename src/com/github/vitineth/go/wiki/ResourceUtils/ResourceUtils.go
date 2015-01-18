@@ -4,15 +4,17 @@ import (
 	"os"
 	"bufio"
 	"strconv"
+	"fmt"
 )
 
 const (
 	DATA_PATH_BASE = "data/"
+	REVISIONS_BASE = METADATA_BASE + "pagerevisions/"
+	TEMPLATES_BASE = DATA_PATH_BASE + "templates/"
+	WIKI_DOC_BASE  = TEMPLATES_BASE + "wiki/"
 	METADATA_BASE  = DATA_PATH_BASE + "meta/"
 	CONTENT_BASE   = DATA_PATH_BASE + "contents/"
-	TEMPLATES_BASE = DATA_PATH_BASE + "templates/"
 	IMAGES_BASE    = DATA_PATH_BASE + "images/"
-	WIKI_DOC_BASE  = TEMPLATES_BASE + "wiki/"
 )
 
 type MetaData struct {
@@ -31,6 +33,53 @@ type Revision struct {
 	IP     string
 	Date   string
 	Time   string
+}
+
+func ReadRevisionsFromFile(pageName string) (revisions []Revision, err error) {
+	filename := REVISIONS_BASE + pageName + ".txt"
+
+	reader, error := os.Open(filename)
+	if error != nil {return nil, error}
+	bufReader := bufio.NewReader(reader)
+
+	var retRevisions []Revision
+
+	for true {
+		author, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		reason, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		old, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		iP, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		date, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		time, _, error := bufReader.ReadLine()
+		if error != nil {break}
+
+		_, _, error = bufReader.ReadLine()
+		if error != nil {break}
+
+		retRevisions = append(retRevisions, Revision{
+				Author: string(author),
+				Reason: string(reason),
+				Old: string(old),
+				IP: string(iP),
+				Date: string(date),
+				Time: string(time), })
+	}
+
+	for i := 0; i < len(retRevisions); i++ {
+		fmt.Println(retRevisions[i])
+	}
+
+	return revisions, nil
 }
 
 func AddPageViewToMetadata(meta *MetaData) (newMeta *MetaData) {
