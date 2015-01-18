@@ -86,7 +86,6 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	}
 	if title == "testWiki" {
 		p.Metadata = ResourceUtils.AddPageViewToMetadata(p.Metadata)
-		fmt.Println(p.Metadata.Views)
 		ResourceUtils.SaveFileMetadata(p.Metadata, p.Title)
 		renderTemplate(w, "testWiki", p, true)
 	}else {

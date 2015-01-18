@@ -75,10 +75,6 @@ func ReadRevisionsFromFile(pageName string) (revisions []Revision, err error) {
 				Time: string(time), })
 	}
 
-	for i := 0; i < len(retRevisions); i++ {
-		fmt.Println(retRevisions[i])
-	}
-
 	return revisions, nil
 }
 
