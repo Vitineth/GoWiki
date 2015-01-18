@@ -8,6 +8,11 @@ import (
 
 const (
 	DATA_PATH_BASE = "data/"
+	METADATA_BASE  = DATA_PATH_BASE + "meta/"
+	CONTENT_BASE   = DATA_PATH_BASE + "contents/"
+	TEMPLATES_BASE = DATA_PATH_BASE + "templates/"
+	IMAGES_BASE    = DATA_PATH_BASE + "images/"
+	WIKI_DOC_BASE  = TEMPLATES_BASE + "wiki/"
 )
 
 type MetaData struct {
@@ -17,7 +22,15 @@ type MetaData struct {
 	LastSaveTime     string
 	Author           string
 	Views            int
+}
 
+type Revision struct {
+	Author string
+	Reason string
+	Old    string
+	IP     string
+	Date   string
+	Time   string
 }
 
 func AddPageViewToMetadata(meta *MetaData) (newMeta *MetaData) {
@@ -33,7 +46,7 @@ func AddPageViewToMetadata(meta *MetaData) (newMeta *MetaData) {
 }
 
 func SaveFileMetadata(meta *MetaData, pageName string) (err error) {
-	filename := "data/meta/" + pageName + ".txt"
+	filename := METADATA_BASE + pageName + ".txt"
 
 	error := os.Remove(filename)
 	if error != nil {return error}
@@ -67,13 +80,12 @@ func SaveFileMetadata(meta *MetaData, pageName string) (err error) {
 }
 
 func LoadFileMetadata(pageName string) (metadata *MetaData, err error) {
-	filename := "data/meta/" + pageName + ".txt"
+	filename := METADATA_BASE + pageName + ".txt"
 	reader, error := os.Open(filename)
 	if error != nil {
 		return &MetaData{}, error
 	}
 	bufReader := bufio.NewReader(reader)
-
 
 	creationDate, _, error := bufReader.ReadLine()
 	if error != nil {return &MetaData{}, error}
