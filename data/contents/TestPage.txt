@@ -1,8 +1,6 @@
 This is a sample page
-
 With some more text
 <br>
 <br>
 And some <em>HTML</em>
-
 All the DATA!
